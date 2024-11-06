@@ -73,6 +73,8 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.informazionisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barraDistatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bottomStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.rtbMain = new System.Windows.Forms.RichTextBox();
             this.topMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -426,11 +428,32 @@
             this.barraDistatoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.barraDistatoToolStripMenuItem.Text = "Barra di &stato";
             // 
+            // bottomStatusStrip
+            // 
+            this.bottomStatusStrip.Location = new System.Drawing.Point(0, 428);
+            this.bottomStatusStrip.Name = "bottomStatusStrip";
+            this.bottomStatusStrip.Size = new System.Drawing.Size(800, 22);
+            this.bottomStatusStrip.TabIndex = 1;
+            this.bottomStatusStrip.Text = "statusStrip1";
+            // 
+            // rtbMain
+            // 
+            this.rtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbMain.Location = new System.Drawing.Point(0, 24);
+            this.rtbMain.Name = "rtbMain";
+            this.rtbMain.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbMain.Size = new System.Drawing.Size(800, 404);
+            this.rtbMain.TabIndex = 2;
+            this.rtbMain.Text = "";
+            this.rtbMain.WordWrap = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rtbMain);
+            this.Controls.Add(this.bottomStatusStrip);
             this.Controls.Add(this.topMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.topMenu;
@@ -489,6 +512,8 @@
         private System.Windows.Forms.ToolStripMenuItem zoomIndietroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ripristinaZoomPredefinitoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barraDistatoToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip bottomStatusStrip;
+        private System.Windows.Forms.RichTextBox rtbMain;
     }
 }
 
