@@ -439,6 +439,7 @@
             // rtbMain
             // 
             this.rtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbMain.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbMain.Location = new System.Drawing.Point(0, 24);
             this.rtbMain.Name = "rtbMain";
             this.rtbMain.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
@@ -446,6 +447,7 @@
             this.rtbMain.TabIndex = 2;
             this.rtbMain.Text = "";
             this.rtbMain.WordWrap = false;
+            this.rtbMain.TextChanged += new System.EventHandler(this.rtbMain_TextChanged);
             // 
             // FormMain
             // 
@@ -459,6 +461,7 @@
             this.MainMenuStrip = this.topMenu;
             this.Name = "FormMain";
             this.Text = "Blocco note di Windows";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.topMenu.ResumeLayout(false);
             this.topMenu.PerformLayout();
             this.ResumeLayout(false);
