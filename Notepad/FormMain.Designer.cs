@@ -67,14 +67,15 @@
             this.zoomAvantiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomIndietroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ripristinaZoomPredefinitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barraDistatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inviafeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.informazionisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.barraDistatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bottomStatusStrip = new System.Windows.Forms.StatusStrip();
             this.rtbMain = new System.Windows.Forms.RichTextBox();
+            this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
             this.topMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,6 +118,7 @@
             this.nuovoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.nuovoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.nuovoToolStripMenuItem.Text = "&Nuovo";
+            this.nuovoToolStripMenuItem.Click += new System.EventHandler(this.nuovoToolStripMenuItem_Click);
             // 
             // nuovaFinestraToolStripMenuItem
             // 
@@ -156,6 +158,7 @@
             | System.Windows.Forms.Keys.S)));
             this.salvaconnomeToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.salvaconnomeToolStripMenuItem.Text = "&Salva con nome...";
+            this.salvaconnomeToolStripMenuItem.Click += new System.EventHandler(this.salvaconnomeToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -337,13 +340,13 @@
             // acapoautomaticoToolStripMenuItem
             // 
             this.acapoautomaticoToolStripMenuItem.Name = "acapoautomaticoToolStripMenuItem";
-            this.acapoautomaticoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.acapoautomaticoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.acapoautomaticoToolStripMenuItem.Text = "A capo a&utomatico";
             // 
             // carattereToolStripMenuItem
             // 
             this.carattereToolStripMenuItem.Name = "carattereToolStripMenuItem";
-            this.carattereToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.carattereToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.carattereToolStripMenuItem.Text = "Cara&ttere...";
             // 
             // visualizzaToolStripMenuItem
@@ -362,7 +365,7 @@
             this.zoomIndietroToolStripMenuItem,
             this.ripristinaZoomPredefinitoToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.zoomToolStripMenuItem.Text = "&Zoom";
             // 
             // zoomAvantiToolStripMenuItem
@@ -385,6 +388,14 @@
             this.ripristinaZoomPredefinitoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D0)));
             this.ripristinaZoomPredefinitoToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.ripristinaZoomPredefinitoToolStripMenuItem.Text = "&Ripristina zoom predefinito";
+            // 
+            // barraDistatoToolStripMenuItem
+            // 
+            this.barraDistatoToolStripMenuItem.Checked = true;
+            this.barraDistatoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.barraDistatoToolStripMenuItem.Name = "barraDistatoToolStripMenuItem";
+            this.barraDistatoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.barraDistatoToolStripMenuItem.Text = "Barra di &stato";
             // 
             // ToolStripMenuItem
             // 
@@ -420,14 +431,6 @@
             this.informazionisuToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.informazionisuToolStripMenuItem.Text = "Informazioni &su Blocco note";
             // 
-            // barraDistatoToolStripMenuItem
-            // 
-            this.barraDistatoToolStripMenuItem.Checked = true;
-            this.barraDistatoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.barraDistatoToolStripMenuItem.Name = "barraDistatoToolStripMenuItem";
-            this.barraDistatoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.barraDistatoToolStripMenuItem.Text = "Barra di &stato";
-            // 
             // bottomStatusStrip
             // 
             this.bottomStatusStrip.Location = new System.Drawing.Point(0, 428);
@@ -448,6 +451,13 @@
             this.rtbMain.Text = "";
             this.rtbMain.WordWrap = false;
             this.rtbMain.TextChanged += new System.EventHandler(this.rtbMain_TextChanged);
+            // 
+            // saveFileDialogMain
+            // 
+            this.saveFileDialogMain.DefaultExt = "txt";
+            this.saveFileDialogMain.Filter = "Documenti di testo|*.txt|Tutti i file|*.*";
+            this.saveFileDialogMain.ShowHelp = true;
+            this.saveFileDialogMain.Title = "Salva con nome";
             // 
             // FormMain
             // 
@@ -517,6 +527,7 @@
         private System.Windows.Forms.ToolStripMenuItem barraDistatoToolStripMenuItem;
         private System.Windows.Forms.StatusStrip bottomStatusStrip;
         private System.Windows.Forms.RichTextBox rtbMain;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogMain;
     }
 }
 

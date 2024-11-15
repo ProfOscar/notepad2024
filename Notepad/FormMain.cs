@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,10 @@ namespace Notepad
     {
         const string EDITED_MARK = "*";
         const string FORM_TITLE_SEPARATOR = " - ";
+        const string SHORT_PROGRAM_NAME = "Blocco note";
         const string PROGRAM_NAME = "Blocco note di Windows";
+
+        string filePath;
         string fileName;
 
         string lastSavedText;
@@ -40,6 +44,53 @@ namespace Notepad
         private void rtbMain_TextChanged(object sender, EventArgs e)
         {
             SetFormTitle(lastSavedText != rtbMain.Text);
+        }
+
+        private void nuovoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lastSavedText == rtbMain.Text)
+            {
+                // non c'è nulla da salvare
+                rtbMain.Text = "";
+            } else
+            {
+                // contenuti da salvare: dialog per l'utente
+                DialogResult result = MessageBox.Show(
+                    $"Salvare le modifiche a {fileName}?",
+                    SHORT_PROGRAM_NAME,
+                    MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show("Simulo il salvataggio...");
+                    rtbMain.Text = "";
+                    SetFormTitle();
+                } else if (result == DialogResult.No)
+                {
+                    rtbMain.Text = "";
+                    SetFormTitle();
+                }
+            }
+        }
+
+        private void salvaconnomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(saveFileDialogMain.FileName))
+                    {
+                        writer.Write(rtbMain.Text);
+                    }
+                    filePath = saveFileDialogMain.FileName;
+                    fileName = Path.GetFileName(filePath);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
     }
 }
