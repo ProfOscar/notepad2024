@@ -455,7 +455,7 @@
             // saveFileDialogMain
             // 
             this.saveFileDialogMain.DefaultExt = "txt";
-            this.saveFileDialogMain.Filter = "Documenti di testo|*.txt|Tutti i file|*.*";
+            this.saveFileDialogMain.Filter = "Documenti di testo (*.txt)|*.txt|Tutti i file|*.*";
             this.saveFileDialogMain.ShowHelp = true;
             this.saveFileDialogMain.Title = "Salva con nome";
             // 

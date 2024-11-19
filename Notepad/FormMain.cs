@@ -30,7 +30,14 @@ namespace Notepad
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            reset();
+        }
+
+        private void reset()
+        {
+            rtbMain.Text = "";
             lastSavedText = "";
+            filePath = "";
             fileName = "Senza nome";
             SetFormTitle();
         }
@@ -52,7 +59,8 @@ namespace Notepad
             {
                 // non c'è nulla da salvare
                 rtbMain.Text = "";
-            } else
+            }
+            else
             {
                 // contenuti da salvare: dialog per l'utente
                 DialogResult result = MessageBox.Show(
@@ -61,13 +69,15 @@ namespace Notepad
                     MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Simulo il salvataggio...");
-                    rtbMain.Text = "";
-                    SetFormTitle();
-                } else if (result == DialogResult.No)
+                    if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
+                    {
+                        salvaFile(saveFileDialogMain.FileName);
+                        reset();
+                    }
+                }
+                else if (result == DialogResult.No)
                 {
-                    rtbMain.Text = "";
-                    SetFormTitle();
+                    reset();
                 }
             }
         }
@@ -76,20 +86,27 @@ namespace Notepad
         {
             if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    using (StreamWriter writer = new StreamWriter(saveFileDialogMain.FileName))
-                    {
-                        writer.Write(rtbMain.Text);
-                    }
-                    filePath = saveFileDialogMain.FileName;
-                    fileName = Path.GetFileName(filePath);
-                }
-                catch (Exception)
-                {
+                salvaFile(saveFileDialogMain.FileName);
+            }
+        }
 
-                    throw;
+        private void salvaFile(string percorsoFile)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(percorsoFile))
+                {
+                    writer.Write(rtbMain.Text);
                 }
+                filePath = saveFileDialogMain.FileName;
+                fileName = Path.GetFileName(filePath);
+                lastSavedText = rtbMain.Text;
+                SetFormTitle();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Problemi durante il salvataggio del documento",
+                    "ATTENZIONE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
