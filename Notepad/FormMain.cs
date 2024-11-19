@@ -62,22 +62,32 @@ namespace Notepad
             }
             else
             {
-                // contenuti da salvare: dialog per l'utente
-                DialogResult result = MessageBox.Show(
-                    $"Salvare le modifiche a {fileName}?",
-                    SHORT_PROGRAM_NAME,
-                    MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+                // contenuti da salvare
+                if (filePath != "")
                 {
-                    if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
+                    // file esistente, uso quello
+                    salvaFile(filePath);
+                    reset();
+                }
+                else
+                {
+                    // file nuovo: dialog per l'utente
+                    DialogResult result = MessageBox.Show(
+                        $"Salvare le modifiche a {fileName}?",
+                        SHORT_PROGRAM_NAME,
+                        MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Yes)
                     {
-                        salvaFile(saveFileDialogMain.FileName);
+                        if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
+                        {
+                            salvaFile(saveFileDialogMain.FileName);
+                            reset();
+                        }
+                    }
+                    else if (result == DialogResult.No)
+                    {
                         reset();
                     }
-                }
-                else if (result == DialogResult.No)
-                {
-                    reset();
                 }
             }
         }
