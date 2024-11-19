@@ -58,7 +58,7 @@ namespace Notepad
             if (lastSavedText == rtbMain.Text)
             {
                 // non c'è nulla da salvare
-                rtbMain.Text = "";
+                reset();
             }
             else
             {
@@ -107,6 +107,20 @@ namespace Notepad
             {
                 MessageBox.Show("Problemi durante il salvataggio del documento",
                     "ATTENZIONE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void salvaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (filePath != "")
+            {
+                // file già esistente
+                salvaFile(filePath);
+            }
+            else
+            {
+                // file nuovo (diventa un salva con nome)
+                salvaconnomeToolStripMenuItem_Click(sender, e);
             }
         }
     }
