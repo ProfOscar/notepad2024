@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Notepad
 {
@@ -160,6 +154,11 @@ namespace Notepad
                 else if (result == DialogResult.Cancel)
                     e.Cancel = true;
             }
+        }
+
+        private void nuovaFinestraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(Application.ExecutablePath);
         }
     }
 }
