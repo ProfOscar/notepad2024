@@ -472,6 +472,7 @@
             this.MainMenuStrip = this.topMenu;
             this.Name = "FormMain";
             this.Text = "Blocco note di Windows";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.topMenu.ResumeLayout(false);
             this.topMenu.PerformLayout();

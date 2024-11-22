@@ -133,5 +133,33 @@ namespace Notepad
                 salvaconnomeToolStripMenuItem_Click(sender, e);
             }
         }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (lastSavedText != rtbMain.Text)
+            {
+                // c'è qualcosa da salvare
+                // file nuovo: dialog per l'utente
+                DialogResult result = MessageBox.Show(
+                    $"Salvare le modifiche a {fileName}?",
+                    SHORT_PROGRAM_NAME,
+                    MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    // Verifico se è un nuovo file o se ha già nome e percorso
+                    if (filePath != "")
+                        salvaFile(filePath);
+                    else
+                    {
+                        if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
+                            salvaFile(saveFileDialogMain.FileName);
+                        else
+                            e.Cancel = true;
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                    e.Cancel = true;
+            }
+        }
     }
 }
