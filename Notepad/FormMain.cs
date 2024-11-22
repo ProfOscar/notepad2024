@@ -51,25 +51,18 @@ namespace Notepad
         {
             if (lastSavedText == rtbMain.Text)
             {
-                // non c'è nulla da salvare
                 reset();
             }
             else
             {
-                // contenuti da salvare
                 if (filePath != "")
                 {
-                    // file esistente, uso quello
                     salvaFile(filePath);
                     reset();
                 }
                 else
                 {
-                    // file nuovo: dialog per l'utente
-                    DialogResult result = MessageBox.Show(
-                        $"Salvare le modifiche a {fileName}?",
-                        SHORT_PROGRAM_NAME,
-                        MessageBoxButtons.YesNoCancel);
+                    DialogResult result = ChiediSeSalvare();
                     if (result == DialogResult.Yes)
                     {
                         if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
@@ -84,6 +77,14 @@ namespace Notepad
                     }
                 }
             }
+        }
+
+        private DialogResult ChiediSeSalvare()
+        {
+            return MessageBox.Show(
+                        $"Salvare le modifiche a {fileName}?",
+                        SHORT_PROGRAM_NAME,
+                        MessageBoxButtons.YesNoCancel);
         }
 
         private void salvaconnomeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,12 +119,10 @@ namespace Notepad
         {
             if (filePath != "")
             {
-                // file già esistente
                 salvaFile(filePath);
             }
             else
             {
-                // file nuovo (diventa un salva con nome)
                 salvaconnomeToolStripMenuItem_Click(sender, e);
             }
         }
@@ -132,10 +131,7 @@ namespace Notepad
         {
             if (lastSavedText != rtbMain.Text)
             {
-                DialogResult result = MessageBox.Show(
-                    $"Salvare le modifiche a {fileName}?",
-                    SHORT_PROGRAM_NAME,
-                    MessageBoxButtons.YesNoCancel);
+                DialogResult result = ChiediSeSalvare();
                 if (result == DialogResult.Yes)
                 {
                     if (filePath != "")
@@ -162,10 +158,7 @@ namespace Notepad
         {
             if (lastSavedText != rtbMain.Text)
             {
-                DialogResult result = MessageBox.Show(
-                    $"Salvare le modifiche a {fileName}?",
-                    SHORT_PROGRAM_NAME,
-                    MessageBoxButtons.YesNoCancel);
+                DialogResult result = ChiediSeSalvare();
                 if (result == DialogResult.Yes)
                 {
                     if (filePath != "")
