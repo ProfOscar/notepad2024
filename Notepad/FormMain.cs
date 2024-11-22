@@ -102,7 +102,7 @@ namespace Notepad
                 {
                     writer.Write(rtbMain.Text);
                 }
-                filePath = saveFileDialogMain.FileName;
+                filePath = percorsoFile;
                 fileName = Path.GetFileName(filePath);
                 lastSavedText = rtbMain.Text;
                 SetFormTitle();
@@ -132,15 +132,12 @@ namespace Notepad
         {
             if (lastSavedText != rtbMain.Text)
             {
-                // c'è qualcosa da salvare
-                // file nuovo: dialog per l'utente
                 DialogResult result = MessageBox.Show(
                     $"Salvare le modifiche a {fileName}?",
                     SHORT_PROGRAM_NAME,
                     MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    // Verifico se è un nuovo file o se ha già nome e percorso
                     if (filePath != "")
                         salvaFile(filePath);
                     else
@@ -159,6 +156,57 @@ namespace Notepad
         private void nuovaFinestraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start(Application.ExecutablePath);
+        }
+
+        private void apriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lastSavedText != rtbMain.Text)
+            {
+                DialogResult result = MessageBox.Show(
+                    $"Salvare le modifiche a {fileName}?",
+                    SHORT_PROGRAM_NAME,
+                    MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    if (filePath != "")
+                        salvaFile(filePath);
+                    else
+                    {
+                        DialogResult saveFileDialogResult = saveFileDialogMain.ShowDialog();
+                        if (saveFileDialogResult == DialogResult.OK)
+                            salvaFile(saveFileDialogMain.FileName);
+                        else if (saveFileDialogResult == DialogResult.Cancel)
+                            return;
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                    return;
+            }
+            openFileDialogMain.FileName = "";
+            if (openFileDialogMain.ShowDialog()== DialogResult.OK)
+            {
+                apriFile(openFileDialogMain.FileName);
+            }
+        }
+
+        private void apriFile(string percorsoFile)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(percorsoFile))
+                {
+                    rtbMain.Text = reader.ReadToEnd();
+                }
+                filePath = percorsoFile;
+                fileName = Path.GetFileName(filePath);
+                lastSavedText = rtbMain.Text;
+                SetFormTitle();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Problemi durante l'apertura del documento",
+                    "ATTENZIONE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
