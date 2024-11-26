@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Notepad
 {
@@ -24,6 +25,7 @@ namespace Notepad
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            pageSetupDialogMain.Document = printDocumentMain;
             reset();
         }
 
@@ -200,6 +202,45 @@ namespace Notepad
                 MessageBox.Show("Problemi durante l'apertura del documento",
                     "ATTENZIONE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void impostapaginaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pageSetupDialogMain.ShowDialog() == DialogResult.OK)
+            {
+                printDocumentMain.PrinterSettings = pageSetupDialogMain.PrinterSettings;
+            }
+        }
+
+        private void stampaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (printDialogMain.ShowDialog() == DialogResult.OK)
+            {
+                printDocumentMain.DocumentName = fileName;
+                printDocumentMain.Print();
+            }
+        }
+
+        private string stringToPrint;
+        private void printDocumentMain_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            stringToPrint = rtbMain.Text;
+        }
+
+        private void printDocumentMain_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int charsOnPage = 0;
+            int linesOnPages = 0;
+
+            e.Graphics.MeasureString(stringToPrint, rtbMain.Font, 
+                e.MarginBounds.Size, StringFormat.GenericTypographic,
+                out charsOnPage, out linesOnPages);
+
+            e.Graphics.DrawString(stringToPrint, rtbMain.Font, new SolidBrush(rtbMain.ForeColor),
+                e.MarginBounds, StringFormat.GenericTypographic);
+
+            stringToPrint = stringToPrint.Substring(charsOnPage);
+            e.HasMorePages = stringToPrint.Length > 0;
         }
     }
 }
