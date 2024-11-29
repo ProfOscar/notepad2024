@@ -74,7 +74,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.informazionisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bottomStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.rtbMain = new System.Windows.Forms.RichTextBox();
+            this.rtbMain = new Notepad.RichTextBoxEx();
             this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogMain = new System.Windows.Forms.OpenFileDialog();
             this.pageSetupDialogMain = new System.Windows.Forms.PageSetupDialog();
@@ -481,6 +481,7 @@
             // printDocumentMain
             // 
             this.printDocumentMain.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocumentMain_BeginPrint);
+            this.printDocumentMain.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocumentMain_EndPrint);
             this.printDocumentMain.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentMain_PrintPage);
             // 
             // FormMain
@@ -551,7 +552,7 @@
         private System.Windows.Forms.ToolStripMenuItem ripristinaZoomPredefinitoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barraDistatoToolStripMenuItem;
         private System.Windows.Forms.StatusStrip bottomStatusStrip;
-        private System.Windows.Forms.RichTextBox rtbMain;
+        private RichTextBoxEx rtbMain;
         private System.Windows.Forms.SaveFileDialog saveFileDialogMain;
         private System.Windows.Forms.OpenFileDialog openFileDialogMain;
         private System.Windows.Forms.PageSetupDialog pageSetupDialogMain;

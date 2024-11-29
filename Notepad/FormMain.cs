@@ -25,6 +25,7 @@ namespace Notepad
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            pageSetupDialogMain.EnableMetric = true;
             pageSetupDialogMain.Document = printDocumentMain;
             reset();
         }
@@ -206,41 +207,46 @@ namespace Notepad
 
         private void impostapaginaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Usando RichTextBoxEx NON BISOGNA applicare le impostazioni di stampa all'oggetto PrintDocument
+            /*
             if (pageSetupDialogMain.ShowDialog() == DialogResult.OK)
             {
                 printDocumentMain.PrinterSettings = pageSetupDialogMain.PrinterSettings;
             }
+            */
+            pageSetupDialogMain.ShowDialog();
         }
 
         private void stampaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (printDialogMain.ShowDialog() == DialogResult.OK)
+            try
             {
-                printDocumentMain.DocumentName = fileName;
-                printDocumentMain.Print();
+                if (printDialogMain.ShowDialog() == DialogResult.OK)
+                {
+                    printDocumentMain.DocumentName = fileName;
+                    printDocumentMain.Print();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Problemi durante la stampa.\nSe stai stampando su file verifica che il file di destinazione non sia aperto.",
+                    "ATTENZIONE!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private string stringToPrint;
+        private int indexFirstCharOnPage;
         private void printDocumentMain_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            stringToPrint = rtbMain.Text;
+            indexFirstCharOnPage = 0;
         }
-
         private void printDocumentMain_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            int charsOnPage = 0;
-            int linesOnPages = 0;
-
-            e.Graphics.MeasureString(stringToPrint, rtbMain.Font, 
-                e.MarginBounds.Size, StringFormat.GenericTypographic,
-                out charsOnPage, out linesOnPages);
-
-            e.Graphics.DrawString(stringToPrint, rtbMain.Font, new SolidBrush(rtbMain.ForeColor),
-                e.MarginBounds, StringFormat.GenericTypographic);
-
-            stringToPrint = stringToPrint.Substring(charsOnPage);
-            e.HasMorePages = stringToPrint.Length > 0;
+            indexFirstCharOnPage = rtbMain.FormatRange(false, e, indexFirstCharOnPage, rtbMain.TextLength);
+            e.HasMorePages = indexFirstCharOnPage < rtbMain.TextLength;
+        }
+        private void printDocumentMain_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            rtbMain.FormatRangeDone();
         }
     }
 }
