@@ -27,7 +27,17 @@ namespace Notepad
         {
             pageSetupDialogMain.EnableMetric = true;
             pageSetupDialogMain.Document = printDocumentMain;
+            annullaToolStripMenuItem.Enabled = false;
+            copiaToolStripMenuItem.Enabled = false;
+            tagliaToolStripMenuItem.Enabled = false;
+            eliminaToolStripMenuItem.Enabled = false;
+            Clipboard.Clear();
             reset();
+        }
+
+        private void FormMain_Activated(object sender, EventArgs e)
+        {
+            incollaToolStripMenuItem.Enabled = Clipboard.ContainsText() || Clipboard.ContainsImage();
         }
 
         private void reset()
@@ -48,6 +58,7 @@ namespace Notepad
         private void rtbMain_TextChanged(object sender, EventArgs e)
         {
             SetFormTitle(lastSavedText != rtbMain.Text);
+            annullaToolStripMenuItem.Enabled = rtbMain.CanUndo || rtbMain.CanRedo;
         }
 
         private void nuovoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,6 +258,54 @@ namespace Notepad
         private void printDocumentMain_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             rtbMain.FormatRangeDone();
+        }
+
+        private void esciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tagliaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbMain.Cut();
+            incollaToolStripMenuItem.Enabled = true;
+        }
+
+        private void copiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbMain.Copy();
+            incollaToolStripMenuItem.Enabled = true;
+        }
+
+        private void incollaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbMain.Paste();
+        }
+
+        private void rtbMain_SelectionChanged(object sender, EventArgs e)
+        {
+            copiaToolStripMenuItem.Enabled = 
+            tagliaToolStripMenuItem.Enabled = 
+            eliminaToolStripMenuItem.Enabled = 
+            rtbMain.SelectionLength > 0;
+        }
+
+        private void annullaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rtbMain.CanRedo)
+                rtbMain.Redo();
+            else
+                rtbMain.Undo();
+        }
+
+        private void selezionatuttoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbMain.SelectAll();
+        }
+
+        private void oraDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbMain.SelectedText = DateTime.Now.ToString("HH:mm dd/MM/yyyy");
         }
     }
 }

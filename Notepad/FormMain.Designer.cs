@@ -74,12 +74,12 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.informazionisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bottomStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.rtbMain = new Notepad.RichTextBoxEx();
             this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogMain = new System.Windows.Forms.OpenFileDialog();
             this.pageSetupDialogMain = new System.Windows.Forms.PageSetupDialog();
             this.printDialogMain = new System.Windows.Forms.PrintDialog();
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
+            this.rtbMain = new Notepad.RichTextBoxEx();
             this.topMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -201,6 +201,7 @@
             this.esciToolStripMenuItem.Name = "esciToolStripMenuItem";
             this.esciToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.esciToolStripMenuItem.Text = "&Esci";
+            this.esciToolStripMenuItem.Click += new System.EventHandler(this.esciToolStripMenuItem_Click);
             // 
             // modificaToolStripMenuItem
             // 
@@ -231,6 +232,7 @@
             this.annullaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.annullaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.annullaToolStripMenuItem.Text = "&Annulla";
+            this.annullaToolStripMenuItem.Click += new System.EventHandler(this.annullaToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -245,6 +247,7 @@
             this.tagliaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.tagliaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.tagliaToolStripMenuItem.Text = "&Taglia";
+            this.tagliaToolStripMenuItem.Click += new System.EventHandler(this.tagliaToolStripMenuItem_Click);
             // 
             // copiaToolStripMenuItem
             // 
@@ -254,6 +257,7 @@
             this.copiaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copiaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.copiaToolStripMenuItem.Text = "&Copia";
+            this.copiaToolStripMenuItem.Click += new System.EventHandler(this.copiaToolStripMenuItem_Click);
             // 
             // incollaToolStripMenuItem
             // 
@@ -263,6 +267,7 @@
             this.incollaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.incollaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.incollaToolStripMenuItem.Text = "I&ncolla";
+            this.incollaToolStripMenuItem.Click += new System.EventHandler(this.incollaToolStripMenuItem_Click);
             // 
             // eliminaToolStripMenuItem
             // 
@@ -329,6 +334,7 @@
             this.selezionatuttoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.selezionatuttoToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.selezionatuttoToolStripMenuItem.Text = "Sele&ziona tutto";
+            this.selezionatuttoToolStripMenuItem.Click += new System.EventHandler(this.selezionatuttoToolStripMenuItem_Click);
             // 
             // oraDataToolStripMenuItem
             // 
@@ -336,6 +342,7 @@
             this.oraDataToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.oraDataToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.oraDataToolStripMenuItem.Text = "Ora/&Data";
+            this.oraDataToolStripMenuItem.Click += new System.EventHandler(this.oraDataToolStripMenuItem_Click);
             // 
             // formatoToolStripMenuItem
             // 
@@ -448,19 +455,6 @@
             this.bottomStatusStrip.TabIndex = 1;
             this.bottomStatusStrip.Text = "statusStrip1";
             // 
-            // rtbMain
-            // 
-            this.rtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbMain.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbMain.Location = new System.Drawing.Point(0, 24);
-            this.rtbMain.Name = "rtbMain";
-            this.rtbMain.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbMain.Size = new System.Drawing.Size(800, 404);
-            this.rtbMain.TabIndex = 2;
-            this.rtbMain.Text = "";
-            this.rtbMain.WordWrap = false;
-            this.rtbMain.TextChanged += new System.EventHandler(this.rtbMain_TextChanged);
-            // 
             // saveFileDialogMain
             // 
             this.saveFileDialogMain.DefaultExt = "txt";
@@ -484,6 +478,20 @@
             this.printDocumentMain.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocumentMain_EndPrint);
             this.printDocumentMain.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentMain_PrintPage);
             // 
+            // rtbMain
+            // 
+            this.rtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbMain.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbMain.Location = new System.Drawing.Point(0, 24);
+            this.rtbMain.Name = "rtbMain";
+            this.rtbMain.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbMain.Size = new System.Drawing.Size(800, 404);
+            this.rtbMain.TabIndex = 2;
+            this.rtbMain.Text = "";
+            this.rtbMain.WordWrap = false;
+            this.rtbMain.SelectionChanged += new System.EventHandler(this.rtbMain_SelectionChanged);
+            this.rtbMain.TextChanged += new System.EventHandler(this.rtbMain_TextChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,6 +504,7 @@
             this.MainMenuStrip = this.topMenu;
             this.Name = "FormMain";
             this.Text = "Blocco note di Windows";
+            this.Activated += new System.EventHandler(this.FormMain_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.topMenu.ResumeLayout(false);
