@@ -446,6 +446,7 @@
             this.informazionisuToolStripMenuItem.Name = "informazionisuToolStripMenuItem";
             this.informazionisuToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.informazionisuToolStripMenuItem.Text = "Informazioni &su Blocco note";
+            this.informazionisuToolStripMenuItem.Click += new System.EventHandler(this.informazionisuToolStripMenuItem_Click);
             // 
             // bottomStatusStrip
             // 
