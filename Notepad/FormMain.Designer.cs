@@ -79,6 +79,7 @@
             this.pageSetupDialogMain = new System.Windows.Forms.PageSetupDialog();
             this.printDialogMain = new System.Windows.Forms.PrintDialog();
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
+            this.fontDialogMain = new System.Windows.Forms.FontDialog();
             this.rtbMain = new Notepad.RichTextBoxEx();
             this.topMenu.SuspendLayout();
             this.SuspendLayout();
@@ -356,14 +357,16 @@
             // acapoautomaticoToolStripMenuItem
             // 
             this.acapoautomaticoToolStripMenuItem.Name = "acapoautomaticoToolStripMenuItem";
-            this.acapoautomaticoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.acapoautomaticoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.acapoautomaticoToolStripMenuItem.Text = "A capo a&utomatico";
+            this.acapoautomaticoToolStripMenuItem.Click += new System.EventHandler(this.acapoautomaticoToolStripMenuItem_Click);
             // 
             // carattereToolStripMenuItem
             // 
             this.carattereToolStripMenuItem.Name = "carattereToolStripMenuItem";
-            this.carattereToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.carattereToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.carattereToolStripMenuItem.Text = "Cara&ttere...";
+            this.carattereToolStripMenuItem.Click += new System.EventHandler(this.carattereToolStripMenuItem_Click);
             // 
             // visualizzaToolStripMenuItem
             // 
@@ -568,6 +571,7 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialogMain;
         private System.Windows.Forms.PrintDialog printDialogMain;
         private System.Drawing.Printing.PrintDocument printDocumentMain;
+        private System.Windows.Forms.FontDialog fontDialogMain;
     }
 }
 

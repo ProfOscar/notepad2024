@@ -32,6 +32,10 @@ namespace Notepad
             tagliaToolStripMenuItem.Enabled = false;
             eliminaToolStripMenuItem.Enabled = false;
             Clipboard.Clear();
+            acapoautomaticoToolStripMenuItem.Checked = false;
+            acapoautomaticoToolStripMenuItem.CheckOnClick = true;
+            rtbMain.WordWrap = false;
+            rtbMain.Font = new Font("Consolas", 11, FontStyle.Regular);
             reset();
         }
 
@@ -312,6 +316,17 @@ namespace Notepad
         {
             AboutBoxMain aboutBoxMain = new AboutBoxMain();
             aboutBoxMain.ShowDialog();
+        }
+
+        private void acapoautomaticoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbMain.WordWrap = acapoautomaticoToolStripMenuItem.Checked;
+        }
+
+        private void carattereToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fontDialogMain.ShowDialog() == DialogResult.OK)
+                rtbMain.Font = fontDialogMain.Font;
         }
     }
 }
