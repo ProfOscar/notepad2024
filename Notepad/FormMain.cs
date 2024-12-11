@@ -36,6 +36,9 @@ namespace Notepad
             acapoautomaticoToolStripMenuItem.CheckOnClick = true;
             rtbMain.WordWrap = false;
             rtbMain.Font = new Font("Consolas", 11, FontStyle.Regular);
+            barraDistatoToolStripMenuItem.Checked = true;
+            barraDistatoToolStripMenuItem.CheckOnClick = true;
+            bottomStatusStrip.Visible = true;
             reset();
         }
 
@@ -312,12 +315,6 @@ namespace Notepad
             rtbMain.SelectedText = DateTime.Now.ToString("HH:mm dd/MM/yyyy");
         }
 
-        private void informazionisuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBoxMain aboutBoxMain = new AboutBoxMain();
-            aboutBoxMain.ShowDialog();
-        }
-
         private void acapoautomaticoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rtbMain.WordWrap = acapoautomaticoToolStripMenuItem.Checked;
@@ -327,6 +324,27 @@ namespace Notepad
         {
             if (fontDialogMain.ShowDialog() == DialogResult.OK)
                 rtbMain.Font = fontDialogMain.Font;
+        }
+
+        private void barraDistatoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bottomStatusStrip.Visible = barraDistatoToolStripMenuItem.Checked;
+        }
+
+        private void guidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://go.microsoft.com/fwlink/?LinkId=834783");
+        }
+
+        private void inviafeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/ProfOscar/notepad2024/issues");
+        }
+
+        private void informazionisuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBoxMain aboutBoxMain = new AboutBoxMain();
+            aboutBoxMain.ShowDialog();
         }
     }
 }
