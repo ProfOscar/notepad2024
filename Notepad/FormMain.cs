@@ -318,6 +318,7 @@ namespace Notepad
         private void acapoautomaticoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rtbMain.WordWrap = acapoautomaticoToolStripMenuItem.Checked;
+            vaiAToolStripMenuItem.Enabled = !rtbMain.WordWrap;
         }
 
         private void carattereToolStripMenuItem_Click(object sender, EventArgs e)
@@ -362,6 +363,14 @@ namespace Notepad
         private void ripristinaZoomPredefinitoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rtbMain.ZoomFactor = 1;
+        }
+
+        private void vaiAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int currentLine = rtbMain.GetLineFromCharIndex(rtbMain.SelectionStart) + 1;
+            int linesCount = rtbMain.Lines.Length;
+            FormGotoLine frmGotoLine = new FormGotoLine(currentLine, linesCount);
+            frmGotoLine.ShowDialog();
         }
     }
 }
