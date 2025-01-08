@@ -346,5 +346,22 @@ namespace Notepad
             AboutBoxMain aboutBoxMain = new AboutBoxMain();
             aboutBoxMain.ShowDialog();
         }
+
+        private void zoomAvantiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rtbMain.ZoomFactor < 5)
+                rtbMain.ZoomFactor += (float)0.1;
+        }
+
+        private void zoomIndietroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rtbMain.ZoomFactor >= 0.2)
+                rtbMain.ZoomFactor -= 0.1f;
+        }
+
+        private void ripristinaZoomPredefinitoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbMain.ZoomFactor = 1;
+        }
     }
 }
