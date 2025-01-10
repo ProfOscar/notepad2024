@@ -37,11 +37,18 @@ namespace Notepad
             acapoautomaticoToolStripMenuItem.CheckOnClick = true;
             rtbMain.WordWrap = false;
             rtbMain.Font = new Font("Consolas", 11, FontStyle.Regular);
+            rtbMain.MouseWheel += RtbMain_MouseWheel;
             barraDistatoToolStripMenuItem.Checked = true;
             barraDistatoToolStripMenuItem.CheckOnClick = true;
             bottomStatusStrip.Visible = true;
             StatusBarWriteZoom();
             reset();
+        }
+
+        private void RtbMain_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if ((ModifierKeys & Keys.Control) == Keys.Control)
+                StatusBarWriteZoom();
         }
 
         private void FormMain_Activated(object sender, EventArgs e)
