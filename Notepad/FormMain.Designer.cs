@@ -288,6 +288,7 @@
             this.cercaConBingToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.cercaConBingToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.cercaConBingToolStripMenuItem.Text = "&Cerca con Bing...";
+            this.cercaConBingToolStripMenuItem.Click += new System.EventHandler(this.cercaConBingToolStripMenuItem_Click);
             // 
             // trovaToolStripMenuItem
             // 
@@ -358,14 +359,14 @@
             // acapoautomaticoToolStripMenuItem
             // 
             this.acapoautomaticoToolStripMenuItem.Name = "acapoautomaticoToolStripMenuItem";
-            this.acapoautomaticoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.acapoautomaticoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.acapoautomaticoToolStripMenuItem.Text = "A capo a&utomatico";
             this.acapoautomaticoToolStripMenuItem.Click += new System.EventHandler(this.acapoautomaticoToolStripMenuItem_Click);
             // 
             // carattereToolStripMenuItem
             // 
             this.carattereToolStripMenuItem.Name = "carattereToolStripMenuItem";
-            this.carattereToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.carattereToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.carattereToolStripMenuItem.Text = "Cara&ttere...";
             this.carattereToolStripMenuItem.Click += new System.EventHandler(this.carattereToolStripMenuItem_Click);
             // 

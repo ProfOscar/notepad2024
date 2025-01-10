@@ -31,6 +31,7 @@ namespace Notepad
             copiaToolStripMenuItem.Enabled = false;
             tagliaToolStripMenuItem.Enabled = false;
             eliminaToolStripMenuItem.Enabled = false;
+            cercaConBingToolStripMenuItem.Enabled = false;
             Clipboard.Clear();
             acapoautomaticoToolStripMenuItem.Checked = false;
             acapoautomaticoToolStripMenuItem.CheckOnClick = true;
@@ -293,7 +294,8 @@ namespace Notepad
         {
             copiaToolStripMenuItem.Enabled = 
             tagliaToolStripMenuItem.Enabled = 
-            eliminaToolStripMenuItem.Enabled = 
+            eliminaToolStripMenuItem.Enabled =
+            cercaConBingToolStripMenuItem.Enabled =
             rtbMain.SelectionLength > 0;
         }
 
@@ -375,6 +377,15 @@ namespace Notepad
                 int charIndexToGo = rtbMain.GetFirstCharIndexFromLine(frmGotoLine.nLine -  1);
                 rtbMain.SelectionStart = charIndexToGo;
             }
+        }
+
+        private void cercaConBingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string baseUrl = "https://www.bing.com/search?q=";
+            string searchKey = rtbMain.SelectedText.Trim();
+            if(searchKey.Length > 128)
+                searchKey = searchKey.Substring(0, 128);
+            Process.Start(baseUrl + Uri.EscapeDataString(searchKey));
         }
     }
 }
