@@ -370,7 +370,11 @@ namespace Notepad
             int currentLine = rtbMain.GetLineFromCharIndex(rtbMain.SelectionStart) + 1;
             int linesCount = rtbMain.Lines.Length;
             FormGotoLine frmGotoLine = new FormGotoLine(currentLine, linesCount);
-            frmGotoLine.ShowDialog();
+            if(frmGotoLine.ShowDialog() == DialogResult.OK)
+            {
+                int charIndexToGo = rtbMain.GetFirstCharIndexFromLine(frmGotoLine.nLine -  1);
+                rtbMain.SelectionStart = charIndexToGo;
+            }
         }
     }
 }

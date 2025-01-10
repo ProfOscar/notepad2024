@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblNumRiga = new System.Windows.Forms.Label();
             this.txtNumRiga = new System.Windows.Forms.TextBox();
             this.btnVai = new System.Windows.Forms.Button();
             this.btnAnnulla = new System.Windows.Forms.Button();
+            this.errorProviderTxtNumRiga = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTxtNumRiga)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNumRiga
@@ -49,6 +52,7 @@
             this.txtNumRiga.Name = "txtNumRiga";
             this.txtNumRiga.Size = new System.Drawing.Size(100, 20);
             this.txtNumRiga.TabIndex = 1;
+            this.txtNumRiga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumRiga_KeyPress);
             // 
             // btnVai
             // 
@@ -70,6 +74,10 @@
             this.btnAnnulla.UseVisualStyleBackColor = true;
             this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
             // 
+            // errorProviderTxtNumRiga
+            // 
+            this.errorProviderTxtNumRiga.ContainerControl = this;
+            // 
             // FormGotoLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -83,6 +91,7 @@
             this.Name = "FormGotoLine";
             this.Text = "Vai alla riga";
             this.Load += new System.EventHandler(this.FormGotoLine_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTxtNumRiga)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,5 +103,6 @@
         private System.Windows.Forms.TextBox txtNumRiga;
         private System.Windows.Forms.Button btnVai;
         private System.Windows.Forms.Button btnAnnulla;
+        private System.Windows.Forms.ErrorProvider errorProviderTxtNumRiga;
     }
 }
