@@ -40,6 +40,7 @@ namespace Notepad
             barraDistatoToolStripMenuItem.Checked = true;
             barraDistatoToolStripMenuItem.CheckOnClick = true;
             bottomStatusStrip.Visible = true;
+            StatusBarWriteZoom();
             reset();
         }
 
@@ -353,18 +354,32 @@ namespace Notepad
         private void zoomAvantiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (rtbMain.ZoomFactor < 5)
+            {
                 rtbMain.ZoomFactor += (float)0.1;
+                StatusBarWriteZoom();
+            }
+
         }
 
         private void zoomIndietroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (rtbMain.ZoomFactor >= 0.2)
+            {
                 rtbMain.ZoomFactor -= 0.1f;
+                StatusBarWriteZoom();
+            }
         }
 
         private void ripristinaZoomPredefinitoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rtbMain.ZoomFactor = 1;
+            StatusBarWriteZoom();
+        }
+
+        private void StatusBarWriteZoom()
+        {
+            int n = (int)(rtbMain.ZoomFactor * 10);
+            toolStripStatusZoom.Text = $"{n}0%";
         }
 
         private void vaiAToolStripMenuItem_Click(object sender, EventArgs e)

@@ -81,7 +81,12 @@
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
             this.fontDialogMain = new System.Windows.Forms.FontDialog();
             this.rtbMain = new Notepad.RichTextBoxEx();
+            this.toolStripStatusEncoding = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLineEnding = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusZoom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLineColumn = new System.Windows.Forms.ToolStripStatusLabel();
             this.topMenu.SuspendLayout();
+            this.bottomStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // topMenu
@@ -461,9 +466,15 @@
             // 
             // bottomStatusStrip
             // 
-            this.bottomStatusStrip.Location = new System.Drawing.Point(0, 428);
+            this.bottomStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusEncoding,
+            this.toolStripStatusLineEnding,
+            this.toolStripStatusZoom,
+            this.toolStripStatusLineColumn});
+            this.bottomStatusStrip.Location = new System.Drawing.Point(0, 426);
             this.bottomStatusStrip.Name = "bottomStatusStrip";
-            this.bottomStatusStrip.Size = new System.Drawing.Size(800, 22);
+            this.bottomStatusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bottomStatusStrip.Size = new System.Drawing.Size(800, 24);
             this.bottomStatusStrip.TabIndex = 1;
             this.bottomStatusStrip.Text = "statusStrip1";
             // 
@@ -497,12 +508,40 @@
             this.rtbMain.Location = new System.Drawing.Point(0, 24);
             this.rtbMain.Name = "rtbMain";
             this.rtbMain.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbMain.Size = new System.Drawing.Size(800, 404);
+            this.rtbMain.Size = new System.Drawing.Size(800, 402);
             this.rtbMain.TabIndex = 2;
             this.rtbMain.Text = "";
             this.rtbMain.WordWrap = false;
             this.rtbMain.SelectionChanged += new System.EventHandler(this.rtbMain_SelectionChanged);
             this.rtbMain.TextChanged += new System.EventHandler(this.rtbMain_TextChanged);
+            // 
+            // toolStripStatusEncoding
+            // 
+            this.toolStripStatusEncoding.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusEncoding.Name = "toolStripStatusEncoding";
+            this.toolStripStatusEncoding.Size = new System.Drawing.Size(69, 19);
+            this.toolStripStatusEncoding.Text = "(encoding)";
+            // 
+            // toolStripStatusLineEnding
+            // 
+            this.toolStripStatusLineEnding.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLineEnding.Name = "toolStripStatusLineEnding";
+            this.toolStripStatusLineEnding.Size = new System.Drawing.Size(78, 19);
+            this.toolStripStatusLineEnding.Text = "(line ending)";
+            // 
+            // toolStripStatusZoom
+            // 
+            this.toolStripStatusZoom.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusZoom.Name = "toolStripStatusZoom";
+            this.toolStripStatusZoom.Size = new System.Drawing.Size(49, 19);
+            this.toolStripStatusZoom.Text = "(zoom)";
+            // 
+            // toolStripStatusLineColumn
+            // 
+            this.toolStripStatusLineColumn.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLineColumn.Name = "toolStripStatusLineColumn";
+            this.toolStripStatusLineColumn.Size = new System.Drawing.Size(93, 19);
+            this.toolStripStatusLineColumn.Text = "(linea, colonna)";
             // 
             // FormMain
             // 
@@ -521,6 +560,8 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.topMenu.ResumeLayout(false);
             this.topMenu.PerformLayout();
+            this.bottomStatusStrip.ResumeLayout(false);
+            this.bottomStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,6 +621,10 @@
         private System.Windows.Forms.PrintDialog printDialogMain;
         private System.Drawing.Printing.PrintDocument printDocumentMain;
         private System.Windows.Forms.FontDialog fontDialogMain;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusEncoding;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLineEnding;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusZoom;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLineColumn;
     }
 }
 
