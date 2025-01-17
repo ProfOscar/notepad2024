@@ -15,6 +15,10 @@ namespace Notepad
         const string SHORT_PROGRAM_NAME = "Blocco note";
         const string PROGRAM_NAME = "Blocco note di Windows";
 
+        const string WIN = "Windows (CRLF)";
+        const string MAC = "Macintosh (CR)";
+        const string UNIX = "Unix (LF)";
+
         string filePath;
         string fileName;
 
@@ -66,6 +70,7 @@ namespace Notepad
             fileName = "Senza nome";
             SetFormTitle();
             WriteLineColumnInStatusBar();
+            toolStripStatusLineEnding.Text = WIN;
         }
 
         private void SetFormTitle(bool showEditedMark = false)
@@ -132,9 +137,11 @@ namespace Notepad
         {
             try
             {
+                string lineEnding = toolStripStatusLineEnding.Text == WIN ? "\r\n" :
+                    toolStripStatusLineEnding.Text == MAC ? "\r" : "\n";
                 using (StreamWriter writer = new StreamWriter(percorsoFile))
                 {
-                    writer.Write(rtbMain.Text);
+                    writer.Write(rtbMain.Text.Replace("\n", lineEnding));
                 }
                 filePath = percorsoFile;
                 fileName = Path.GetFileName(filePath);
@@ -221,7 +228,12 @@ namespace Notepad
             {
                 using (StreamReader reader = new StreamReader(percorsoFile))
                 {
-                    rtbMain.Text = reader.ReadToEnd();
+                    string st = reader.ReadToEnd();
+                    if (st.Contains("\r\n")) toolStripStatusLineEnding.Text = WIN;
+                    else if (st.Contains("\r")) toolStripStatusLineEnding.Text = MAC;
+                    else toolStripStatusLineEnding.Text = UNIX;
+                    // il RichTextBox converte sempre gli 'a capo' in '\n'
+                    rtbMain.Text = st;
                 }
                 filePath = percorsoFile;
                 fileName = Path.GetFileName(filePath);
