@@ -3,6 +3,8 @@ using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing;
+using System.Text.RegularExpressions;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Notepad
 {
@@ -63,6 +65,7 @@ namespace Notepad
             filePath = "";
             fileName = "Senza nome";
             SetFormTitle();
+            WriteLineColumnInStatusBar();
         }
 
         private void SetFormTitle(bool showEditedMark = false)
@@ -206,7 +209,7 @@ namespace Notepad
                     return;
             }
             openFileDialogMain.FileName = "";
-            if (openFileDialogMain.ShowDialog()== DialogResult.OK)
+            if (openFileDialogMain.ShowDialog() == DialogResult.OK)
             {
                 apriFile(openFileDialogMain.FileName);
             }
@@ -300,11 +303,24 @@ namespace Notepad
 
         private void rtbMain_SelectionChanged(object sender, EventArgs e)
         {
-            copiaToolStripMenuItem.Enabled = 
-            tagliaToolStripMenuItem.Enabled = 
+            copiaToolStripMenuItem.Enabled =
+            tagliaToolStripMenuItem.Enabled =
             eliminaToolStripMenuItem.Enabled =
             cercaConBingToolStripMenuItem.Enabled =
             rtbMain.SelectionLength > 0;
+            WriteLineColumnInStatusBar();
+        }
+
+        private void WriteLineColumnInStatusBar()
+        {
+            int nLine = 1, nCol = 1;
+            if (rtbMain.Text.Length > 0)
+            {
+                string stPrevText = rtbMain.Text.Substring(0, rtbMain.SelectionStart);
+                nLine = Regex.Matches(stPrevText, @"\n").Count + 1;
+                nCol = rtbMain.SelectionStart - stPrevText.LastIndexOf("\n");
+            }
+            toolStripStatusLineColumn.Text = $"Linea {nLine}, colonna {nCol}";
         }
 
         private void annullaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -394,9 +410,9 @@ namespace Notepad
             int currentLine = rtbMain.GetLineFromCharIndex(rtbMain.SelectionStart) + 1;
             int linesCount = rtbMain.Lines.Length;
             FormGotoLine frmGotoLine = new FormGotoLine(currentLine, linesCount);
-            if(frmGotoLine.ShowDialog() == DialogResult.OK)
+            if (frmGotoLine.ShowDialog() == DialogResult.OK)
             {
-                int charIndexToGo = rtbMain.GetFirstCharIndexFromLine(frmGotoLine.nLine -  1);
+                int charIndexToGo = rtbMain.GetFirstCharIndexFromLine(frmGotoLine.nLine - 1);
                 rtbMain.SelectionStart = charIndexToGo;
             }
         }
@@ -405,7 +421,7 @@ namespace Notepad
         {
             string baseUrl = "https://www.bing.com/search?q=";
             string searchKey = rtbMain.SelectedText.Trim();
-            if(searchKey.Length > 128)
+            if (searchKey.Length > 128)
                 searchKey = searchKey.Substring(0, 128);
             Process.Start(baseUrl + Uri.EscapeDataString(searchKey));
         }
