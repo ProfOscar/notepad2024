@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.LinkLabel;
+using System.Text;
 
 namespace Notepad
 {
@@ -21,6 +22,8 @@ namespace Notepad
 
         string filePath;
         string fileName;
+
+        Encoding encoding;
 
         string lastSavedText;
 
@@ -71,6 +74,8 @@ namespace Notepad
             SetFormTitle();
             WriteLineColumnInStatusBar();
             toolStripStatusLineEnding.Text = WIN;
+            encoding = Encoding.UTF8;
+            toolStripStatusEncoding.Text = encoding.BodyName.ToUpper();
         }
 
         private void SetFormTitle(bool showEditedMark = false)
@@ -229,9 +234,16 @@ namespace Notepad
                 using (StreamReader reader = new StreamReader(percorsoFile))
                 {
                     string st = reader.ReadToEnd();
+
+                    // scrivo il line ending sulla status bar
                     if (st.Contains("\r\n")) toolStripStatusLineEnding.Text = WIN;
                     else if (st.Contains("\r")) toolStripStatusLineEnding.Text = MAC;
                     else toolStripStatusLineEnding.Text = UNIX;
+
+                    // scrivo l'encoding sulla status bar
+                    encoding = reader.CurrentEncoding;
+                    toolStripStatusEncoding.Text = encoding.BodyName.ToUpper();
+
                     // il RichTextBox converte sempre gli 'a capo' in '\n'
                     rtbMain.Text = st;
                 }
