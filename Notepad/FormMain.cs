@@ -144,7 +144,7 @@ namespace Notepad
             {
                 string lineEnding = toolStripStatusLineEnding.Text == WIN ? "\r\n" :
                     toolStripStatusLineEnding.Text == MAC ? "\r" : "\n";
-                using (StreamWriter writer = new StreamWriter(percorsoFile))
+                using (StreamWriter writer = new StreamWriter(percorsoFile, false, encoding))
                 {
                     writer.Write(rtbMain.Text.Replace("\n", lineEnding));
                 }

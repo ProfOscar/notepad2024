@@ -74,6 +74,10 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.informazionisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bottomStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusEncoding = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLineEnding = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusZoom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLineColumn = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogMain = new System.Windows.Forms.OpenFileDialog();
             this.pageSetupDialogMain = new System.Windows.Forms.PageSetupDialog();
@@ -81,10 +85,6 @@
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
             this.fontDialogMain = new System.Windows.Forms.FontDialog();
             this.rtbMain = new Notepad.RichTextBoxEx();
-            this.toolStripStatusEncoding = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLineEnding = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusZoom = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLineColumn = new System.Windows.Forms.ToolStripStatusLabel();
             this.topMenu.SuspendLayout();
             this.bottomStatusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -478,6 +478,42 @@
             this.bottomStatusStrip.TabIndex = 1;
             this.bottomStatusStrip.Text = "statusStrip1";
             // 
+            // toolStripStatusEncoding
+            // 
+            this.toolStripStatusEncoding.AutoSize = false;
+            this.toolStripStatusEncoding.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusEncoding.Name = "toolStripStatusEncoding";
+            this.toolStripStatusEncoding.Size = new System.Drawing.Size(120, 19);
+            this.toolStripStatusEncoding.Text = "(encoding)";
+            this.toolStripStatusEncoding.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusLineEnding
+            // 
+            this.toolStripStatusLineEnding.AutoSize = false;
+            this.toolStripStatusLineEnding.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLineEnding.Name = "toolStripStatusLineEnding";
+            this.toolStripStatusLineEnding.Size = new System.Drawing.Size(130, 19);
+            this.toolStripStatusLineEnding.Text = "(line ending)";
+            this.toolStripStatusLineEnding.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusZoom
+            // 
+            this.toolStripStatusZoom.AutoSize = false;
+            this.toolStripStatusZoom.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusZoom.Name = "toolStripStatusZoom";
+            this.toolStripStatusZoom.Size = new System.Drawing.Size(54, 19);
+            this.toolStripStatusZoom.Text = "(zoom)";
+            this.toolStripStatusZoom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusLineColumn
+            // 
+            this.toolStripStatusLineColumn.AutoSize = false;
+            this.toolStripStatusLineColumn.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLineColumn.Name = "toolStripStatusLineColumn";
+            this.toolStripStatusLineColumn.Size = new System.Drawing.Size(140, 19);
+            this.toolStripStatusLineColumn.Text = "(linea, colonna)";
+            this.toolStripStatusLineColumn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // saveFileDialogMain
             // 
             this.saveFileDialogMain.DefaultExt = "txt";
@@ -514,34 +550,6 @@
             this.rtbMain.WordWrap = false;
             this.rtbMain.SelectionChanged += new System.EventHandler(this.rtbMain_SelectionChanged);
             this.rtbMain.TextChanged += new System.EventHandler(this.rtbMain_TextChanged);
-            // 
-            // toolStripStatusEncoding
-            // 
-            this.toolStripStatusEncoding.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusEncoding.Name = "toolStripStatusEncoding";
-            this.toolStripStatusEncoding.Size = new System.Drawing.Size(69, 19);
-            this.toolStripStatusEncoding.Text = "(encoding)";
-            // 
-            // toolStripStatusLineEnding
-            // 
-            this.toolStripStatusLineEnding.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLineEnding.Name = "toolStripStatusLineEnding";
-            this.toolStripStatusLineEnding.Size = new System.Drawing.Size(78, 19);
-            this.toolStripStatusLineEnding.Text = "(line ending)";
-            // 
-            // toolStripStatusZoom
-            // 
-            this.toolStripStatusZoom.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusZoom.Name = "toolStripStatusZoom";
-            this.toolStripStatusZoom.Size = new System.Drawing.Size(49, 19);
-            this.toolStripStatusZoom.Text = "(zoom)";
-            // 
-            // toolStripStatusLineColumn
-            // 
-            this.toolStripStatusLineColumn.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLineColumn.Name = "toolStripStatusLineColumn";
-            this.toolStripStatusLineColumn.Size = new System.Drawing.Size(93, 19);
-            this.toolStripStatusLineColumn.Text = "(linea, colonna)";
             // 
             // FormMain
             // 
