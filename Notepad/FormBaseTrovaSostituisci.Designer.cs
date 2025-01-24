@@ -32,7 +32,7 @@
             this.txtTrova = new System.Windows.Forms.TextBox();
             this.btnTrova = new System.Windows.Forms.Button();
             this.btnAnnulla = new System.Windows.Forms.Button();
-            this.chkTestoIntorno = new System.Windows.Forms.CheckBox();
+            this.chkParolaIntera = new System.Windows.Forms.CheckBox();
             this.chkMaiusMinus = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -53,6 +53,7 @@
             this.txtTrova.Name = "txtTrova";
             this.txtTrova.Size = new System.Drawing.Size(236, 26);
             this.txtTrova.TabIndex = 1;
+            this.txtTrova.TextChanged += new System.EventHandler(this.txtTrova_TextChanged);
             // 
             // btnTrova
             // 
@@ -63,6 +64,7 @@
             this.btnTrova.TabIndex = 2;
             this.btnTrova.Text = "Trova successivo";
             this.btnTrova.UseVisualStyleBackColor = true;
+            this.btnTrova.Click += new System.EventHandler(this.btnTrova_Click);
             // 
             // btnAnnulla
             // 
@@ -73,17 +75,18 @@
             this.btnAnnulla.TabIndex = 3;
             this.btnAnnulla.Text = "Annulla";
             this.btnAnnulla.UseVisualStyleBackColor = true;
+            this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
             // 
-            // chkTestoIntorno
+            // chkParolaIntera
             // 
-            this.chkTestoIntorno.AutoSize = true;
-            this.chkTestoIntorno.Location = new System.Drawing.Point(14, 155);
-            this.chkTestoIntorno.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chkTestoIntorno.Name = "chkTestoIntorno";
-            this.chkTestoIntorno.Size = new System.Drawing.Size(128, 24);
-            this.chkTestoIntorno.TabIndex = 4;
-            this.chkTestoIntorno.Text = "Testo intorno";
-            this.chkTestoIntorno.UseVisualStyleBackColor = true;
+            this.chkParolaIntera.AutoSize = true;
+            this.chkParolaIntera.Location = new System.Drawing.Point(14, 155);
+            this.chkParolaIntera.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkParolaIntera.Name = "chkParolaIntera";
+            this.chkParolaIntera.Size = new System.Drawing.Size(124, 24);
+            this.chkParolaIntera.TabIndex = 4;
+            this.chkParolaIntera.Text = "Parola intera";
+            this.chkParolaIntera.UseVisualStyleBackColor = true;
             // 
             // chkMaiusMinus
             // 
@@ -102,7 +105,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 183);
             this.Controls.Add(this.chkMaiusMinus);
-            this.Controls.Add(this.chkTestoIntorno);
+            this.Controls.Add(this.chkParolaIntera);
             this.Controls.Add(this.btnAnnulla);
             this.Controls.Add(this.btnTrova);
             this.Controls.Add(this.txtTrova);
@@ -111,6 +114,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormBaseTrovaSostituisci";
             this.Text = "FormBaseTrovaSostituisci";
+            this.Load += new System.EventHandler(this.FormBaseTrovaSostituisci_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,7 +124,7 @@
 
         private System.Windows.Forms.Label lblTrova;
         private System.Windows.Forms.Button btnTrova;
-        private System.Windows.Forms.CheckBox chkTestoIntorno;
+        private System.Windows.Forms.CheckBox chkParolaIntera;
         private System.Windows.Forms.CheckBox chkMaiusMinus;
         protected System.Windows.Forms.Button btnAnnulla;
         protected System.Windows.Forms.TextBox txtTrova;

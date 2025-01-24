@@ -55,6 +55,7 @@
     <Compile Include="AboutBoxMain.Designer.cs">
       <DependentUpon>AboutBoxMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FindReplaceService.cs" />
     <Compile Include="FormBaseTrovaSostituisci.cs">
       <SubType>Form</SubType>
     </Compile>

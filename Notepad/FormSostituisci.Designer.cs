@@ -42,6 +42,7 @@
             // 
             this.txtTrova.Location = new System.Drawing.Point(130, 15);
             this.txtTrova.Size = new System.Drawing.Size(192, 26);
+            this.txtTrova.TextChanged += new System.EventHandler(this.txtTrova_TextChanged);
             // 
             // lblSostituisci
             // 
@@ -67,6 +68,7 @@
             this.btnSostituisci.TabIndex = 8;
             this.btnSostituisci.Text = "Sostituisci";
             this.btnSostituisci.UseVisualStyleBackColor = true;
+            this.btnSostituisci.Click += new System.EventHandler(this.btnSostituisci_Click);
             // 
             // btnSostituisciTutto
             // 
@@ -76,6 +78,7 @@
             this.btnSostituisciTutto.TabIndex = 9;
             this.btnSostituisciTutto.Text = "Sostituisci tutto";
             this.btnSostituisciTutto.UseVisualStyleBackColor = true;
+            this.btnSostituisciTutto.Click += new System.EventHandler(this.btnSostituisciTutto_Click);
             // 
             // FormSostituisci
             // 
@@ -88,6 +91,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "FormSostituisci";
             this.Text = "Sostituisci";
+            this.Load += new System.EventHandler(this.FormSostituisci_Load);
             this.Controls.SetChildIndex(this.txtTrova, 0);
             this.Controls.SetChildIndex(this.btnAnnulla, 0);
             this.Controls.SetChildIndex(this.lblSostituisci, 0);

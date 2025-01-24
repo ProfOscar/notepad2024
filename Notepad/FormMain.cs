@@ -50,6 +50,7 @@ namespace Notepad
             barraDistatoToolStripMenuItem.Checked = true;
             barraDistatoToolStripMenuItem.CheckOnClick = true;
             bottomStatusStrip.Visible = true;
+            FindReplaceService.Target = rtbMain;
             StatusBarWriteZoom();
             reset();
         }
@@ -457,6 +458,32 @@ namespace Notepad
             if (searchKey.Length > 128)
                 searchKey = searchKey.Substring(0, 128);
             Process.Start(baseUrl + Uri.EscapeDataString(searchKey));
+        }
+
+        private void trovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rtbMain.SelectionLength > 0)
+                FindReplaceService.Parameters.TextToFind = rtbMain.SelectedText;
+            FormTrova f = new FormTrova();
+            f.TopMost = true;
+            f.Show();
+        }
+
+        private void trovaSuccessivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trovaPrecedenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sostituisciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSostituisci f = new FormSostituisci();
+            f.TopMost = true;
+            f.Show();
         }
     }
 }
