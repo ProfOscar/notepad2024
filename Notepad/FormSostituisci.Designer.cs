@@ -38,6 +38,11 @@
             // 
             this.btnAnnulla.Location = new System.Drawing.Point(338, 141);
             // 
+            // txtTrova
+            // 
+            this.txtTrova.Location = new System.Drawing.Point(130, 15);
+            this.txtTrova.Size = new System.Drawing.Size(192, 26);
+            // 
             // lblSostituisci
             // 
             this.lblSostituisci.AutoSize = true;
@@ -83,6 +88,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "FormSostituisci";
             this.Text = "Sostituisci";
+            this.Controls.SetChildIndex(this.txtTrova, 0);
             this.Controls.SetChildIndex(this.btnAnnulla, 0);
             this.Controls.SetChildIndex(this.lblSostituisci, 0);
             this.Controls.SetChildIndex(this.txtSostituisci, 0);

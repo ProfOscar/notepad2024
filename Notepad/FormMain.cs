@@ -76,6 +76,7 @@ namespace Notepad
             toolStripStatusLineEnding.Text = WIN;
             encoding = Encoding.UTF8;
             toolStripStatusEncoding.Text = encoding.BodyName.ToUpper();
+            setEnabledTrovaSostituisci();
         }
 
         private void SetFormTitle(bool showEditedMark = false)
@@ -88,6 +89,14 @@ namespace Notepad
         {
             SetFormTitle(lastSavedText != rtbMain.Text);
             annullaToolStripMenuItem.Enabled = rtbMain.CanUndo || rtbMain.CanRedo;
+            setEnabledTrovaSostituisci();
+        }
+
+        private void setEnabledTrovaSostituisci()
+        {
+            trovaToolStripMenuItem.Enabled = trovaPrecedenteToolStripMenuItem.Enabled =
+                trovaSuccessivoToolStripMenuItem.Enabled = sostituisciToolStripMenuItem.Enabled =
+                rtbMain.TextLength > 0;
         }
 
         private void nuovoToolStripMenuItem_Click(object sender, EventArgs e)
