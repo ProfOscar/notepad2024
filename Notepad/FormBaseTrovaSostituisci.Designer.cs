@@ -82,6 +82,7 @@
             this.chkParolaIntera.TabIndex = 4;
             this.chkParolaIntera.Text = "Parola intera";
             this.chkParolaIntera.UseVisualStyleBackColor = true;
+            this.chkParolaIntera.CheckedChanged += new System.EventHandler(this.chkParolaIntera_CheckedChanged);
             // 
             // chkMaiusMinus
             // 
@@ -92,6 +93,7 @@
             this.chkMaiusMinus.TabIndex = 5;
             this.chkMaiusMinus.Text = "Maiuscole/minuscole";
             this.chkMaiusMinus.UseVisualStyleBackColor = true;
+            this.chkMaiusMinus.CheckedChanged += new System.EventHandler(this.chkMaiusMinus_CheckedChanged);
             // 
             // FormBaseTrovaSostituisci
             // 

@@ -52,8 +52,10 @@ namespace Notepad
         /// <returns>La posizione del testo trovato, oppure -1 se non trovato</returns>
         public static int Replace()
         {
-            //TODO
-            return -1;
+            StringComparison comparison = Parameters.IsCaseSensitive ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase;
+            int stComp = String.Compare(Target.SelectedText, Parameters.TextToFind, comparison);
+            if (stComp == 0) Target.SelectedText = Parameters.TextToReplace;
+            return Find();
         }
 
         /// <summary>
