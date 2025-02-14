@@ -467,16 +467,32 @@ namespace Notepad
             FormTrova f = new FormTrova();
             f.TopMost = true;
             f.Show();
+            centraDialog(f);
+        }
+
+        private void centraDialog(Form f)
+        {
+            f.Top = (this.Top + (this.Height / 2)) - f.Height / 2;
+            f.Left = (this.Left + (this.Width / 2)) - f.Width / 2;
         }
 
         private void trovaSuccessivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            doTrovaPrecSucc(sender, e, false);
         }
 
         private void trovaPrecedenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            doTrovaPrecSucc(sender, e, true);
+        }
 
+        private void doTrovaPrecSucc(object sender, EventArgs e, bool isUp)
+        {
+            FindReplaceService.Parameters.IsUp = isUp;
+            if (FindReplaceService.Parameters.TextToFind == "")
+                trovaToolStripMenuItem_Click(sender, e);
+            else
+                if (FindReplaceService.Find() == -1) FindReplaceService.ShowNotFoundMessageBox();
         }
 
         private void sostituisciToolStripMenuItem_Click(object sender, EventArgs e)
@@ -484,6 +500,7 @@ namespace Notepad
             FormSostituisci f = new FormSostituisci();
             f.TopMost = true;
             f.Show();
+            centraDialog(f);
         }
     }
 }

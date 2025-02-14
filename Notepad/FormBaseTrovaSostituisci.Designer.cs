@@ -39,28 +39,25 @@
             // lblTrova
             // 
             this.lblTrova.AutoSize = true;
-            this.lblTrova.Location = new System.Drawing.Point(9, 20);
-            this.lblTrova.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTrova.Location = new System.Drawing.Point(6, 13);
             this.lblTrova.Name = "lblTrova";
-            this.lblTrova.Size = new System.Drawing.Size(52, 20);
+            this.lblTrova.Size = new System.Drawing.Size(38, 13);
             this.lblTrova.TabIndex = 0;
             this.lblTrova.Text = "Trova:";
             // 
             // txtTrova
             // 
-            this.txtTrova.Location = new System.Drawing.Point(86, 15);
-            this.txtTrova.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTrova.Location = new System.Drawing.Point(57, 10);
             this.txtTrova.Name = "txtTrova";
-            this.txtTrova.Size = new System.Drawing.Size(236, 26);
+            this.txtTrova.Size = new System.Drawing.Size(159, 20);
             this.txtTrova.TabIndex = 1;
             this.txtTrova.TextChanged += new System.EventHandler(this.txtTrova_TextChanged);
             // 
             // btnTrova
             // 
-            this.btnTrova.Location = new System.Drawing.Point(338, 12);
-            this.btnTrova.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnTrova.Location = new System.Drawing.Point(225, 8);
             this.btnTrova.Name = "btnTrova";
-            this.btnTrova.Size = new System.Drawing.Size(170, 35);
+            this.btnTrova.Size = new System.Drawing.Size(113, 23);
             this.btnTrova.TabIndex = 2;
             this.btnTrova.Text = "Trova successivo";
             this.btnTrova.UseVisualStyleBackColor = true;
@@ -68,10 +65,9 @@
             // 
             // btnAnnulla
             // 
-            this.btnAnnulla.Location = new System.Drawing.Point(338, 62);
-            this.btnAnnulla.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAnnulla.Location = new System.Drawing.Point(225, 40);
             this.btnAnnulla.Name = "btnAnnulla";
-            this.btnAnnulla.Size = new System.Drawing.Size(170, 35);
+            this.btnAnnulla.Size = new System.Drawing.Size(113, 23);
             this.btnAnnulla.TabIndex = 3;
             this.btnAnnulla.Text = "Annulla";
             this.btnAnnulla.UseVisualStyleBackColor = true;
@@ -80,10 +76,9 @@
             // chkParolaIntera
             // 
             this.chkParolaIntera.AutoSize = true;
-            this.chkParolaIntera.Location = new System.Drawing.Point(14, 155);
-            this.chkParolaIntera.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkParolaIntera.Location = new System.Drawing.Point(9, 101);
             this.chkParolaIntera.Name = "chkParolaIntera";
-            this.chkParolaIntera.Size = new System.Drawing.Size(124, 24);
+            this.chkParolaIntera.Size = new System.Drawing.Size(85, 17);
             this.chkParolaIntera.TabIndex = 4;
             this.chkParolaIntera.Text = "Parola intera";
             this.chkParolaIntera.UseVisualStyleBackColor = true;
@@ -91,19 +86,18 @@
             // chkMaiusMinus
             // 
             this.chkMaiusMinus.AutoSize = true;
-            this.chkMaiusMinus.Location = new System.Drawing.Point(14, 120);
-            this.chkMaiusMinus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkMaiusMinus.Location = new System.Drawing.Point(9, 78);
             this.chkMaiusMinus.Name = "chkMaiusMinus";
-            this.chkMaiusMinus.Size = new System.Drawing.Size(181, 24);
+            this.chkMaiusMinus.Size = new System.Drawing.Size(126, 17);
             this.chkMaiusMinus.TabIndex = 5;
             this.chkMaiusMinus.Text = "Maiuscole/minuscole";
             this.chkMaiusMinus.UseVisualStyleBackColor = true;
             // 
             // FormBaseTrovaSostituisci
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 183);
+            this.ClientSize = new System.Drawing.Size(350, 119);
             this.Controls.Add(this.chkMaiusMinus);
             this.Controls.Add(this.chkParolaIntera);
             this.Controls.Add(this.btnAnnulla);
@@ -111,7 +105,6 @@
             this.Controls.Add(this.txtTrova);
             this.Controls.Add(this.lblTrova);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormBaseTrovaSostituisci";
             this.Text = "FormBaseTrovaSostituisci";
             this.Load += new System.EventHandler(this.FormBaseTrovaSostituisci_Load);
