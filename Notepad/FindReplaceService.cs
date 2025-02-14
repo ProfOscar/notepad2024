@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,10 +62,10 @@ namespace Notepad
         /// <summary>
         /// Cerca tutte le occorrenze del parametro TextToFind all'interno del RichTextBox Target e le sostituisce con TextToReplace
         /// </summary>
-        /// <returns>True se ci sono state sostituzioni, altrimenti false</returns>
-        public static bool ReplaceAll()
+        public static void ReplaceAll()
         {
-            return false;
+            RegexOptions options = !Parameters.IsCaseSensitive ? RegexOptions.IgnoreCase : RegexOptions.None;
+            Target.Text = Regex.Replace(Target.Text, Parameters.TextToFind, Parameters.TextToReplace, options);
         }
 
         /// <summary>
