@@ -497,6 +497,8 @@ namespace Notepad
 
         private void sostituisciToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (rtbMain.SelectionLength > 0)
+                FindReplaceService.Parameters.TextToFind = rtbMain.SelectedText;
             FormSostituisci f = new FormSostituisci();
             f.TopMost = true;
             f.Show();
