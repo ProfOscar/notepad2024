@@ -78,7 +78,9 @@ namespace Notepad
                     $"Impossibile trovare \"{FindReplaceService.Parameters.TextToFind}\"",
                     "Blocco note",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.ServiceNotification
                     );
         }
     }
