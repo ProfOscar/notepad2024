@@ -65,7 +65,8 @@ namespace Notepad
         public static void ReplaceAll()
         {
             RegexOptions options = !Parameters.IsCaseSensitive ? RegexOptions.IgnoreCase : RegexOptions.None;
-            Target.Text = Regex.Replace(Target.Text, Parameters.TextToFind, Parameters.TextToReplace, options);
+            string textToFind = Parameters.IsWholeWord ? $@"\b{Parameters.TextToFind}\b" : Parameters.TextToFind;
+            Target.Text = Regex.Replace(Target.Text, textToFind, Parameters.TextToReplace, options);
         }
 
         /// <summary>
